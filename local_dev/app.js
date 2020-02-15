@@ -1,9 +1,12 @@
 var url_flat = "ph_flat.json";
 var url_date = "ph_date.json";
+var url_index = "ph_date_index.json";
+var url_columns = "ph_date_columns.json";
 var sources = {};
 
 function init() {
   d3.json(url_date).then((data) => {
+    plotData();
     var sandbox = d3.select(".sandbox");
     var table = sandbox.append("table").attr("class", "phTable");
     var phPlot = d3.select("#phPlot");
@@ -16,7 +19,6 @@ function init() {
       } else {
         popSources([key, value]);
       }
-      plotData();      
     });
 
     function fillRow(row, [key, value]) {
@@ -30,18 +32,21 @@ function init() {
     function popDates([dateKey, dateValue]) {
       return dateObj = new Object(Object.values(dateValue));
     }
-    console.log(`here are the dates: ${Object.values(dateObj)}`);
-    console.log(`${Object.keys(dateObj)}`);
+    // console.log(`here are the dates: ${Object.values(dateObj)}`);
 
     function popSources([name, readingsObj]) {
-      sources[`${name}`] = Object.values(readingsObj).map((readings) => {
-        return readings;
+
+      Object.values(readingsObj).map((reading) => {
+        // console.log(`Source: ${name}, Reading: ${reading}`);
       });
+      // console.log(`Source: ${name}, readings: $`)
       
-      Object.values(sources).map((value) => {
-        console.log(value);
+      // sources[`${name}`] = Object.values(readingsObj).map((readings) => {});
+      
+      // Object.values(sources).map((value) => {
+      //   console.log(value);
         // console.log(`Well: ${key}, Readings: ${Object.values(value)}`);
-      });
+      // });
     }
 
     function plotData() {
