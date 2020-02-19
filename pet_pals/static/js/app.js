@@ -120,7 +120,7 @@ function init() {
 
       };
 
-      Plotly.newPlot("phPlot", data, layout);
+      plotly.newPlot("phPlot", data, layout);
     }
   });
 }
