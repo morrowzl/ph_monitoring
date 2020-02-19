@@ -2,51 +2,65 @@ var url_flat = "ph_flat.json";
 var url_date = "ph_date.json";
 var url_index = "ph_date_index.json";
 var url_columns = "ph_date_columns.json";
-var sources = {};
+// var sources = {};
+var eventDatesObj = {};
 
 function init() {
-  d3.json(url_date).then((data) => {
-    plotData();
+
+  d3.json(url_columns).then((column_data) => {
+    
     var sandbox = d3.select(".sandbox");
-    var table = sandbox.append("table").attr("class", "phTable");
+    sandbox.selectAll("#phTable").remove();
+    var table = sandbox.append("table").attr("id", "phTable");
+    var theadrow = table.append("thead").attr("id", "phTableHead").append("tr");
+    var tbody = table.append("tbody").attr("id", "phTableBody");
     var phPlot = d3.select("#phPlot");
+    var eventCount, eventDatesObj = popDates(column_data);
+    popTable(column_data);
+    plotData();
+    
 
-    Object.entries(data).map(([key, value]) => {
-      var row = table.append("tr");
-      fillRow(row, [key, value]);
-      if (key == "Date") {
-        popDates([key, value]);
-      } else {
-        popSources([key, value]);
-      }
-    });
+    function popTable(column_data) {
 
-    function fillRow(row, [key, value]) {
-      row.append("td").text(`${key}`);
+      popDates(column_data);      
+      fillHeader(theadrow);
       
-      Object.values(value).map((reading) => {
-      row.append("td").text(`${reading}`);
+      Object.entries(column_data).map(([sourceName, datesReadingsObj]) => {
+        // add new row to the table id="#phTable"
+        var row = tbody.append("tr");
+        // pass the selected row and the entry's key-value pair to display data for each source
+        fillRow(row, [sourceName, datesReadingsObj]);
       });
-    };
-
-    function popDates([dateKey, dateValue]) {
-      return dateObj = new Object(Object.values(dateValue));
     }
-    // console.log(`here are the dates: ${Object.values(dateObj)}`);
 
-    function popSources([name, readingsObj]) {
-
-      Object.values(readingsObj).map((reading) => {
-        // console.log(`Source: ${name}, Reading: ${reading}`);
+    function fillRow(row, [sourceName, datesReadingsObj]) {
+      // add new first cell to the row for source name
+      row.append("th").text(`${sourceName}`);
+      
+      // add new cells to the row for pH readings
+      Object.values(datesReadingsObj).map((phReading) => {
+        row.append("td").text(`${phReading}`);
       });
-      // console.log(`Source: ${name}, readings: $`)
+    }
+
+    function popDates(column_data) {
+      var eventNumber = 1;
+      var eventDatesObj = {};
+      var zerothSource = (Object.entries(column_data)[0][1]);
       
-      // sources[`${name}`] = Object.values(readingsObj).map((readings) => {});
+      Object.keys(zerothSource).map((eventDate) => {
+        (eventDatesObj[`${eventNumber}`] = eventDate); 
+        (eventNumber += 1);
+      });      
+      return (eventCount = eventNumber), eventDatesObj;
+    }
+
+    function fillHeader(theadrow) {
       
-      // Object.values(sources).map((value) => {
-      //   console.log(value);
-        // console.log(`Well: ${key}, Readings: ${Object.values(value)}`);
-      // });
+      theadrow.append("th").text("Date: ");
+      Object.values(eventDatesObj).map((date) => {
+        theadrow.append("th").attr("scope", "cols").attr("colspan", "1").text(`${date}`);
+      });
     }
 
     function plotData() {
@@ -290,3 +304,110 @@ function buildPlot() {
 
 init();
 buildPlot();*/
+
+// column_data = {entries of sourceName: datesReadingsObj} where
+  // property source name like MW-1-5
+  // value like {entries of date: phReading} where
+    // property = date of reading
+    // value = pH reading type=int
+      // var eventDatesObj = {};
+      // var eventNumber = 1;
+      
+      // console.log(Object.keys(column_data));
+      // // an indexed array of date strings
+      // console.log(Object.values(column_data));
+      // // an indexed array of {date:phReading} objects
+      // console.log(Object.entries(column_data));
+      // // an indexed array of indexed arrays like i: [0: "dateString", 1: {date:phReading}]
+      // console.log((Object.entries(column_data)[0]));
+      // //an indexed array like [0: "dateString", 1: {date:phReading}]
+      // var zerothSource = (Object.entries(column_data)[0][1]);
+      // // an object of date:phReading pairs
+      // console.log(zerothSource);
+      // // an object of date:phReading pairs
+      // console.log(Object.keys(zerothSource));
+      // // an indexed array of dateStrings
+      // console.log(Object.values(zerothSource));
+      // // an indexed array of phReading numbers
+      // Object.keys(zerothSource).map((eventDate) => {
+      //   Object.defineProperty(eventDatesObj, eventNumber, {value: eventDate});
+      //   return (eventNumber += 1), eventDatesObj;
+      // });
+      // console.log(Object.keys(eventDatesObj));
+
+/*
+      console.log(`1. the zeroth source is >>> ${zerothSource}`);
+      console.log(typeof(zerothSource));
+      console.log(Object.keys(zerothSource));
+      console.log(Object.values(zerothSource));
+      
+      Object.keys((zerothSource[1])).map((someDate) => {
+        console.log(`2. someDate is >>> ${someDate}, event number: ${eventNumber}`)
+        Object.defineProperty(sampleDates, (`${eventNumber}`), {value: someDate});
+        eventNumber += 1;
+        console.log(`3. sampleDates = ${sampleDates}`);
+        return sampleDates;
+      });
+
+      console.log(`4. sampleDates = ${sampleDates}`);
+      console.log(typeof(sampleDates)); 
+      console.log(Object.getOwnPropertyNames(sampleDates));
+      console.log(Object.values(sampleDates).map((thing) => {
+        return thing;
+      }));
+      console.log(Object.values(sampleDates));
+
+      // Object.values(sampleDates).map((eventDate) => {
+      //   console.log(`4. samplesDates >>> ${eventDate}`);
+      //   // theadrow.append("th").text(`${eventDate}`);
+      // });
+
+      Object.entries(sampleDates).map(([key, value]) => {
+        console.log(`event number: ${key}, date: ${value}`);
+      });
+*/
+
+    // function popDates([dateKey, dateValue]) {
+    //   return dateObj = new Object(Object.values(dateValue));
+    // }
+    // console.log(`here are the dates: ${Object.values(dateObj)}`);
+
+    // function popSources([name, readingsObj]) {
+
+    //   Object.values(readingsObj).map((reading) => {
+    //     // console.log(`Source: ${name}, Reading: ${reading}`);
+    //   });
+    //   // console.log(`Source: ${name}, readings: $`)
+      
+    //   // sources[`${name}`] = Object.values(readingsObj).map((readings) => {});
+      
+    //   // Object.values(sources).map((value) => {
+    //   //   console.log(value);
+    //     // console.log(`Well: ${key}, Readings: ${Object.values(value)}`);
+    //   // });
+    // }
+
+    //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  
+    /*
+    var keysTwo, sources = primaryProperties(column_data);
+
+    function primaryProperties(column_data) {
+
+      var keys = 0;
+      var sources = {};
+    
+      Object.keys(column_data).map((property) => {
+        console.log(property);
+        Object.defineProperty(sources, property, {value: property});
+        return (keys += 1,  sources);
+      });
+
+      console.log(`keys logged inside of primaryProperties: ${keys}`);
+      return (keysTwo = keys), sources;
+      
+    }
+
+    console.log(keysTwo);
+    console.log(sources);
+    */
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||      

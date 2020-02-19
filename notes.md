@@ -29,6 +29,3 @@ change macro output to be table with headers: date, source type, source id, sour
 
 make dropdown selector for each header (except date?), and add "submit" button
 
-Need Object
-property = source-id
-value = Object: date: reading pairs
