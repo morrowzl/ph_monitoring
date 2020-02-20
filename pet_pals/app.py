@@ -31,6 +31,13 @@ from .models import Pet
 def home():
     return render_template("index.html")
 
+@app.route("/plot")
+def plot():
+    return render_template("plot.html")
+
+@app.route("/table")
+def table():
+    return render_template("table.html")
 
 # Query the database and send the jsonified results
 @app.route("/send", methods=["GET", "POST"])

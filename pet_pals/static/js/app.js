@@ -4,6 +4,8 @@ var url_index = "../static/data/ph_date_index.json";
 var url_columns = "../static/data/ph_date_columns.json";
 // var sources = {};
 var eventDatesObj = {};
+var sandbox = d3.select(".sandbox");
+var phPlot = d3.select("#phPlot");
 
 function init() {
 
@@ -14,12 +16,9 @@ function init() {
     var table = sandbox.append("table").attr("id", "phTable");
     var theadrow = table.append("thead").attr("id", "phTableHead").append("tr");
     var tbody = table.append("tbody").attr("id", "phTableBody");
-    var phPlot = d3.select("#phPlot");
     var eventCount, eventDatesObj = popDates(column_data);
     popTable(column_data);
-    plotData();
-    
-
+     
     function popTable(column_data) {
 
       popDates(column_data);      
@@ -63,66 +62,74 @@ function init() {
       });
     }
 
-    function plotData() {
-
-      let x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      let y_1 = [7.0, 7.5, 7.6, 7.6, 7.2, 7.7, 7.4, 7.2, 6.9, 7.1];
-      let y_2 = [9.4, 9.0, 9.3, 9.6, 9.7, 9.6, 9.7, 9.3, 8.8, 9.7];
-      let y_3 = [5.0, 5.1, 5.3, 5.2, 5.5, 5.9, 5.8, 5.7, 4.8, 5.5];
-      
-      var trace1 = {
-        x: x,
-        y: y_1,
-        mode: 'lines+markers',
-        type: 'scatter',
-        // hovertext: y_1,
-        name: "5-foot depth",
-        // marker: {
-        //   size: myObj.samples.sample_values,
-        //   colorscale: "Rainbow",
-        //   color: myObj.samples.otu_ids,
-        //   line: {
-        //     color: "000000",
-        //     width: "0.5",
-        //   },      
-        // },
-        // text: myObj.samples.otu_labels,
-      };
-
-      var trace2 = {
-        x: x,
-        y: y_2,
-        mode: 'lines+markers',
-        type: 'scatter',
-        // hovertext: y_2,
-        name: "10-foot depth",
-      };
-
-      var trace3 = {
-        x: x,
-        y: y_3,
-        mode: 'lines+markers',
-        type: 'scatter',
-        // hovertext: y_3,
-        name: "15-foot depth",
-      };
-
-      var data = [trace1, trace2, trace3];
-
-      var layout = {
-        title: {
-          text: "Field-measured pH",
-        },
-        showlegend: true,
-        legend: {
-          bgcolor: "#adff2f",
-        },
-
-      };
-
-      Plotly.newPlot("phPlot", data, layout);
-    }
+    
   });
+}
+
+function showPlot() {
+  sandbox.selectAll("#phTable").remove();
+  console.log("Nicely done");
+  testPlot();
+}
+
+function testPlot() {
+
+  let x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let y_1 = [7.0, 7.5, 7.6, 7.6, 7.2, 7.7, 7.4, 7.2, 6.9, 7.1];
+  let y_2 = [9.4, 9.0, 9.3, 9.6, 9.7, 9.6, 9.7, 9.3, 8.8, 9.7];
+  let y_3 = [5.0, 5.1, 5.3, 5.2, 5.5, 5.9, 5.8, 5.7, 4.8, 5.5];
+  
+  var trace1 = {
+    x: x,
+    y: y_1,
+    mode: 'lines+markers',
+    type: 'scatter',
+    // hovertext: y_1,
+    name: "5-foot depth",
+    // marker: {
+    //   size: myObj.samples.sample_values,
+    //   colorscale: "Rainbow",
+    //   color: myObj.samples.otu_ids,
+    //   line: {
+    //     color: "000000",
+    //     width: "0.5",
+    //   },      
+    // },
+    // text: myObj.samples.otu_labels,
+  };
+
+  var trace2 = {
+    x: x,
+    y: y_2,
+    mode: 'lines+markers',
+    type: 'scatter',
+    // hovertext: y_2,
+    name: "10-foot depth",
+  };
+
+  var trace3 = {
+    x: x,
+    y: y_3,
+    mode: 'lines+markers',
+    type: 'scatter',
+    // hovertext: y_3,
+    name: "15-foot depth",
+  };
+
+  var data = [trace1, trace2, trace3];
+
+  var layout = {
+    title: {
+      text: "Field-measured pH",
+    },
+    showlegend: true,
+    legend: {
+      bgcolor: "#adff2f",
+    },
+
+  };
+
+  Plotly.newPlot("phPlot", data, layout);
 }
 
 init();
