@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pH Monitoring - Home</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/cerulean.css') }}"> -->
+  <!-- <link rel="stylesheet" href="cerulean.css"/> -->
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+  <!-- <link rel="stylesheet" href="cerulean.css"/> -->
+  <!-- <link rel="stylesheet" href="style.css"/> -->
+  <!-- <link rel="icon" type="image/ico" href="./static/images/favicon.ico" sizes=16x16/> -->
+  <link rel="icon" type="image/ico" href="../static/images/favicon.ico" sizes=16x16/>
+  <script src="../static/js/d3.v5.min.js"></script>
+  <script src="../static/js/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  <div class="nav-div">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/" active>Home</a>            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/plot" active>Plot</a>            
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link" href="/table" active>Table</a>            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" disabled>Heatmap</a>
+          </li>                    
+        </ul>
+      </div>
+    </nav>
+  </div> 
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sandbox"></div>
+        <div id="phPlot"></div>        
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="container">
+    <div class="jumbotron" style="text-align: center">
+      <h1>Pet Pal</h1>
+      <p>Find your pet a pal!</p>
+    </div>
+    <div class="row" id="well-selector-row">
+      <div class="col-md-3 offset-md-1">
+        <div class="well">
+          <h5>Well Selector:</h5>
+          <form>
+            <select id="well-selector" onchange="wellSelected(this.value)"></select>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="scatter-plot-row">
+      <div class="col-6">
+        <div class="scatter-plot-div" id="scatter-plot-div"></div>
+      </div>
+      <div class="col-6">
+        <div class="table-div" id="table-div">
+          <thead id="table-head"></thead>
+          <tbody id="table-body"></tbody>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Look at all of the current pet pals!</h2>
+        <div id="plot"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2><a href="/send">Add your pet here!</a></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+  <!-- <script src="../static/js/app.js"></script> -->
+  <script src="../static/js/app.js"></script>
+  <!-- <script src="../static/js/plotly-latest.min.js"></script> -->
+  <script src="../static/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

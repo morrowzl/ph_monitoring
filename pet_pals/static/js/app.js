@@ -1,26 +1,81 @@
-var url_flat = "../static/data/ph_flat.json";
-var url_date = "../static/data/ph_date.json";
-var url_index = "../static/data/ph_date_index.json";
-var url_columns = "../static/data/ph_date_columns.json";
+// for examples of d3.json see week 15 day 2 activities 3 and 4
+const url_flat = "../static/data/ph_flat.json";
+const url_date = "../static/data/ph_date.json";
+const url_index = "../static/data/ph_date_index.json";
+const url_columns = "../static/data/ph_date_columns.json";
 // var sources = {};
 var eventDatesObj = {};
-var sandbox = d3.select(".sandbox");
+var tableCol = d3.select("#table-col");
+var plotCol = d3.select("plot-col")
+var sandbox = d3.select("#sandbox");
 var phPlot = d3.select("#phPlot");
+var buttonContainer = d3.select(".button-container");
+const column_data = d3.json(url_columns);
+const url = url_columns;
+// console.log("column_data: ", column_data);
+// init(column_data);
 
+// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// initiate page with buttons or check box for monitoring points
 function init() {
+  console.log("Starting function init()");
+  alert("Hello! Please click the button corresponding to the monitoring point for which you'd like to see pH data");
+  // fetch data
+  // create button for each source
+  createButtonsOne();
+}
 
+// use d3 to fetch json, pass to createButtons
+function createButtonsOne() {
+  d3.json(url).then(data => {
+    createButtonsTwo(data)
+  });
+}
+
+// createButtons by fetching data, 
+function createButtonsTwo(data) {
+  console.log("createButtons initiated");
+  Object.keys(data).map((key) => {
+    appendButton(key);
+  });
+}
+
+function appendButton(someKey) {
+  console.log("appendButton initiated");
+  buttonContainer.
+  append("button").
+  attr("type", "button").
+  attr("class", "point-button").
+  attr("value", `${someKey}`).
+  attr("onclick", "pointSelected(this.value)").
+  text(`${someKey}`);
+}
+// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+function pointSelected(somePoint) {
+  alert(`you have selected ${somePoint}`);
+  showData(somePoint);
+}
+
+function showData(thisPoint) {
+  d3.json(url).then((data) => {
+    console.log(data[`${thisPoint}`]);
+    console.log(`showData() was called for ${thisPoint}`);
+  });
+}
+
+function dataTable() {
+  console.log("dataTable() initiated");
   d3.json(url_columns).then((column_data) => {
-    
-    var sandbox = d3.select(".sandbox");
     sandbox.selectAll("#phTable").remove();
-    var table = sandbox.append("table").attr("id", "phTable");
+    var table = sandbox.append("table").attr("class", "table table-striped").attr("id", "phTable");
     var theadrow = table.append("thead").attr("id", "phTableHead").append("tr");
     var tbody = table.append("tbody").attr("id", "phTableBody");
     var eventCount, eventDatesObj = popDates(column_data);
     popTable(column_data);
      
     function popTable(column_data) {
-
       popDates(column_data);      
       fillHeader(theadrow);
       
@@ -61,15 +116,7 @@ function init() {
         theadrow.append("th").attr("scope", "cols").attr("colspan", "1").text(`${date}`);
       });
     }
-
-    
   });
-}
-
-function showPlot() {
-  sandbox.selectAll("#phTable").remove();
-  console.log("Nicely done");
-  testPlot();
 }
 
 function testPlot() {
@@ -84,18 +131,7 @@ function testPlot() {
     y: y_1,
     mode: 'lines+markers',
     type: 'scatter',
-    // hovertext: y_1,
     name: "5-foot depth",
-    // marker: {
-    //   size: myObj.samples.sample_values,
-    //   colorscale: "Rainbow",
-    //   color: myObj.samples.otu_ids,
-    //   line: {
-    //     color: "000000",
-    //     width: "0.5",
-    //   },      
-    // },
-    // text: myObj.samples.otu_labels,
   };
 
   var trace2 = {
@@ -103,7 +139,6 @@ function testPlot() {
     y: y_2,
     mode: 'lines+markers',
     type: 'scatter',
-    // hovertext: y_2,
     name: "10-foot depth",
   };
 
@@ -112,7 +147,6 @@ function testPlot() {
     y: y_3,
     mode: 'lines+markers',
     type: 'scatter',
-    // hovertext: y_3,
     name: "15-foot depth",
   };
 
@@ -133,18 +167,6 @@ function testPlot() {
 }
 
 init();
-
-
-
-
-
-
-
-
-
-
-
-
 // function init () {
 
 //   d3.json(url_date).then((date_data) => {
