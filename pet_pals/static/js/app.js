@@ -12,16 +12,8 @@ var phPlot = d3.select("#phPlot");
 var buttonContainer = d3.select(".button-container");
 const column_data = d3.json(url_columns);
 const url = url_columns;
-// console.log("column_data: ", column_data);
-// init(column_data);
 
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// initiate page with buttons or check box for monitoring points
 function init() {
-  console.log("Starting function init()");
-  alert("Hello! Please click the button corresponding to the monitoring point for which you'd like to see pH data");
-  // fetch data
-  // create button for each source
   createButtonsOne();
 }
 
@@ -34,14 +26,12 @@ function createButtonsOne() {
 
 // createButtons by fetching data, 
 function createButtonsTwo(data) {
-  console.log("createButtons initiated");
   Object.keys(data).map((key) => {
     appendButton(key);
   });
 }
 
 function appendButton(someKey) {
-  console.log("appendButton initiated");
   buttonContainer.
   append("button").
   attr("type", "button").
@@ -50,11 +40,8 @@ function appendButton(someKey) {
   attr("onclick", "pointSelected(this.value)").
   text(`${someKey}`);
 }
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 function pointSelected(somePoint) {
-  alert(`you have selected ${somePoint}`);
   showData(somePoint);
 }
 
@@ -153,6 +140,7 @@ function testPlot() {
   var data = [trace1, trace2, trace3];
 
   var layout = {
+    autosize: true,
     title: {
       text: "Field-measured pH",
     },
@@ -163,7 +151,9 @@ function testPlot() {
 
   };
 
-  Plotly.newPlot("phPlot", data, layout);
+  var config = {responsive: true}
+
+  Plotly.newPlot("phPlot", data, layout, config);
 }
 
 init();
