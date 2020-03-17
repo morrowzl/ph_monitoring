@@ -1,0 +1,195 @@
+a.img-thumbnail {
+  margin: 5px;
+}
+
+body {
+  background-color: #d4d4d4;
+}
+
+header {
+  background-color: #000000;
+  color: #d4d4d4;
+  margin-bottom: 1.5%;
+  padding-bottom: 7px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-top: 6px;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+th {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+ul {
+  padding-inline-start: 0%;
+}
+
+.comparison_img {
+  max-width: 400px;
+  height: auto;
+}
+
+.container-fluid {
+  margin-left: 0%;
+  margin-right: 0%;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+.content-tile {
+  background-color: #ffffff8e;
+  border-color: #000000;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  margin-bottom: 2%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 2%;
+  padding: 15px;
+}
+
+.content-row {
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.img-thumbnail {
+  border-color: #000;
+  max-width: 90%;
+  height: auto;
+}
+
+.nav-item {
+  border-color: #ffffff00;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 3px;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.nav-item:hover {
+  background-color: #358bee79;
+  border-color: #2fbdff;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.nav-link {
+  background-color: #ffffff00;
+  border-radius: 3px;
+  color: #000000!important;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+  background-color: #b7ff12!important;
+}
+
+.navbar-brand {
+  border-color: #ffffff00;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 3px;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.navbar-brand:hover {
+  background-color: #358bee79;
+  border-color: #2fbdff;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.navbar-light.navbar-nav.nav-link {
+  border-color: #ffffff00;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 3px;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.row {
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff85;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #ffffffb6;
+}
+
+.textbox {
+  background-color: #adff2f;
+  border: 5px solid #000000;
+  color: #0057bb;
+  font-size: 14pt;
+  margin: 5px;
+  padding: 5px;
+  text-decoration: underline;
+}
+
+.visualizations_box {
+  background-color: #ffffff8e;
+  border-color: #2c3d50;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#github-brand {
+  font-size: 1rem;
+}
+
+#neon-yellow {
+  background-color: #b7ff12;
+  border-color: #000000;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  color: #000000;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+#zcolors {
+  background-color: #adff2f;
+  background-color: #b7ff12;
+  background-color: #ccff00;
+/* check out https://encycolorpedia.com/ */
+}
