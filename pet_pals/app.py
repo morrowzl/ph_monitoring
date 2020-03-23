@@ -6,19 +6,40 @@ from flask import (
     jsonify,
     request,
     redirect)
-
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
 #################################################
 # Flask Setup
 #################################################
-app = Flask(__name__)
 
 #################################################
 # Database Setup
 #################################################
 
 from flask_sqlalchemy import SQLAlchemy
+
+# IS_HEROKU = False
+# if('IS_HEROKU' in os.environ):
+#     IS_HEROKU = True
+
+# if (IS_HEROKU):
+#     local_host = os.environ['local_host']
+#     local_port = os.environ['local_port']
+#     local_db = os.environ['local_db']
+#     local_user = os.environ['local_user']
+#     local_pwd = os.environ['loca_pwd']    
+#     API_KEY = os.environ['mapboxkey']
+# else:
+#     from config import local_host, local_port, local_db, local_user, local_pwd 
+
+# engine = create_engine(f"postgres://{local_user}:{local_pwd}@{local_host}:{local_port}/{local_db}")
+# conn = engine.connect()
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 
@@ -57,6 +78,15 @@ def send():
         return redirect("/", code=302)
 
     return render_template("form.html")
+
+@app.route("/mapboxkey", methods=["GET", "POST"])
+def mapbox():
+    """Return the recommendations page."""
+    if request.method == "POST":
+        return 200
+
+    else:
+        return json.dumps(API_KEY)    
 
 
 @app.route("/api/pals")
