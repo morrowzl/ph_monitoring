@@ -4,7 +4,7 @@
 
 function createMap() {
   fetch('/mapboxkey', {credentials:'omit'}).then((response) => {
-    return response.json()}).then((key) => key);
+    return response.json()}).then((api_key) => key = api_key);
   // Create a map object
   var myMap = L.map("mappy-boi", {
     //38.702969, -76.828331
