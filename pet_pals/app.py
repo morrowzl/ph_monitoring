@@ -31,6 +31,10 @@ from .models import Pet
 def home():
     return render_template("index.html")
 
+@app.route("/map")
+def home():
+    return render_template("map.html")    
+
 @app.route("/plot")
 def plot():
     return render_template("plot.html")
