@@ -6,7 +6,7 @@ function createMap(key) {
   var myMap = L.map("mappy-boi", {
     //38.702969, -76.828331
     center: [38.7029, -76.8283],
-    zoom: 10
+    zoom: 13
   });
 
   var tile = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
