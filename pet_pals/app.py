@@ -42,6 +42,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
+app.config['API_KEY'] = os.environ.get('mapboxkey', '')
 
 db = SQLAlchemy(app)
 
@@ -79,14 +80,13 @@ def send():
 
     return render_template("form.html")
 
-@app.route("/mapboxkey", methods=["GET", "POST"])
-def mapbox():
-    """Return the recommendations page."""
-    if request.method == "POST":
-        return 200
+# @app.route("/mapboxkey", methods=["GET", "POST"])
+# def mapbox():
+#     if request.method == "POST":
+#         return 200
 
-    else:
-        return json.dumps(API_KEY)    
+#     else:
+#         return json.dumps(API_KEY)    
 
 
 @app.route("/api/pals")
