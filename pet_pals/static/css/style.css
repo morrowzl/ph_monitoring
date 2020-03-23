@@ -176,6 +176,14 @@ ul {
   font-size: 1rem;
 }
 
+#mappy-boi {
+  height: 100%;
+  max-width: auto;
+  outline-color: #2fbdff;
+  outline-style: solid;
+  outline-width: 5px;
+}
+
 #neon-yellow {
   background-color: #b7ff12;
   border-color: #000000;
