@@ -21,6 +21,8 @@ from flask_sqlalchemy import SQLAlchemy
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
+# app.config['API_KEY'] = os.environ.get('mapboxkey', '')
+API_KEY = os.environ.get('mapboxkey', '')
 
 db = SQLAlchemy(app)
 
@@ -84,6 +86,14 @@ def pals():
     }]
 
     return jsonify(pet_data)
+
+@app.route("/mapboxkey", methods=["GET", "POST"])
+def mapbox():
+    if request.method == "POST":
+        return 200
+
+    else:
+        return json.dumps(API_KEY)
 
 
 if __name__ == "__main__":
