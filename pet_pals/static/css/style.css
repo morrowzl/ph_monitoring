@@ -177,11 +177,8 @@ ul {
 }
 
 #mappy-boi {
-  height: 500px;
+  height: auto;
   width: auto;
-  outline-color: #2fbdff;
-  outline-style: solid;
-  outline-width: 5px;
 }
 
 #neon-yellow {
