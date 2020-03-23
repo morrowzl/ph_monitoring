@@ -1,7 +1,10 @@
-var API_KEY = fetch('/mapboxkey', {credentials:'omit'}).then((response) => {
-  return response.json()}).then((key) => createMap(key));
+// var API_KEY = fetch('/mapboxkey', {credentials:'omit'}).then((response) => {
+//   return response.json()}).then((key) => createMap(key));
 
-function createMap(key) {
+
+function createMap() {
+  fetch('/mapboxkey', {credentials:'omit'}).then((response) => {
+    return response.json()}).then((key) => key);
   // Create a map object
   var myMap = L.map("mappy-boi", {
     //38.702969, -76.828331
@@ -19,3 +22,5 @@ function createMap(key) {
 
   tile.addTo(myMap);
 }
+
+createMap();
