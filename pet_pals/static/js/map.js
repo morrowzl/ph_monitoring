@@ -110,7 +110,7 @@ function createMap(accessToken) {
   for (var i = 0; i < points.length; i++) {
     // loop through the cities array, create a new marker, push it to the cityMarkers array
     pointMarkers.push(
-      L.marker(points[i].coordinates).bindPopup("<h1>" + cities[i].id + "</h1>")
+      L.marker(points[i].coordinates).bindPopup(`<h1>${points[i].id}</h1><br><h1>${points[i].coordinates}</h1>` )
     );
   }
 
