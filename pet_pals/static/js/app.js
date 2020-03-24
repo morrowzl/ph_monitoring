@@ -47,8 +47,8 @@ function pointSelected(somePoint) {
 
 function showData(thisPoint) {
   d3.json(url).then((data) => {
-    console.log(data[`${thisPoint}`]);
     console.log(`showData() was called for ${thisPoint}`);
+    console.log(data[`${thisPoint}`]);
   });
 }
 
