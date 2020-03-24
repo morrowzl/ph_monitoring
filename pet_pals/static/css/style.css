@@ -86,8 +86,8 @@ ul {
 }
 
 .nav-item:hover {
-  background-color: #358bee79;
-  border-color: #2fbdff;
+  background-color: #fd038c56;
+  border-color: #fd038d;
   border-style: solid;
   border-width: 3px;
 }
@@ -103,7 +103,8 @@ ul {
 }
 
 .navbar.navbar-expand-lg.navbar-light.bg-light {
-  background-color: #b7ff12!important;
+  /* background-color: #b7ff12!important; */
+  background-color: #ffbb00!important;
 }
 
 .navbar-brand {
@@ -119,8 +120,8 @@ ul {
 }
 
 .navbar-brand:hover {
-  background-color: #358bee79;
-  border-color: #2fbdff;
+  background-color: #fd038c56;
+  border-color: #fd038d;
   border-style: solid;
   border-width: 3px;
 }
