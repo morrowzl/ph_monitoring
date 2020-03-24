@@ -49,6 +49,40 @@ function showData(thisPoint) {
   d3.json(url).then((data) => {
     console.log(`showData() was called for ${thisPoint}`);
     console.log(data[`${thisPoint}`]);
+
+    var dates = [];
+    var readings = [];
+
+    Object.entries(data[`${thisPoint}`]).map(([date, reading]) => {
+      dates.push(date);
+      readings.push(reading);
+    });
+    
+    var trace1 = {
+      x: dates,
+      y: readings,
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: `${thisPoint}`,
+    };
+
+    var data = [trace1];
+
+    var layout = {
+      autosize: true,
+      title: {
+        text: "Field-measured pH",
+      },
+      showlegend: true,
+      legend: {
+        bgcolor: "#ffffff00",
+      },
+
+    };
+
+    var config = {responsive: true}
+
+    Plotly.newPlot("plot-col", data, layout, config);    
   });
 }
 
@@ -137,7 +171,11 @@ function testPlot() {
     name: "15-foot depth",
   };
 
-  var data = [trace1, trace2, trace3];
+  var data = [
+    trace1, 
+    trace2, 
+    trace3
+    ];
 
   var layout = {
     autosize: true,
