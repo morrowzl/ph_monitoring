@@ -34,10 +34,6 @@ li {
   list-style-type: none;
 }
 
-section {
-  margin-bottom: 1.5rem;
-}
-
 th {
   font-size: 14pt;
   font-weight: bold;
@@ -57,6 +53,10 @@ ul {
   margin-right: 0%;
   padding-left: 0%;
   padding-right: 0%;
+}
+
+.content-section {
+  margin-bottom: 1.5rem;
 }
 
 .content-tile {
