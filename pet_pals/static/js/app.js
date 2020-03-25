@@ -47,7 +47,6 @@ function appendOption(someKey) {
   customSelect.
   append("option").
   attr("value", `${someKey}`).
-  attr("onchange", "pointSelected(this.value)").
   text(`${someKey}`);
 }
 
