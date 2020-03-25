@@ -10,6 +10,7 @@ var plotCol = d3.select("plot-col")
 var sandbox = d3.select("#sandbox");
 var phPlot = d3.select("#phPlot");
 var buttonContainer = d3.select(".button-container");
+var customSelect = d3.select(".custom-select");
 const column_data = d3.json(url_columns);
 const url = url_columns;
 
@@ -28,6 +29,7 @@ function createButtonsOne() {
 function createButtonsTwo(data) {
   Object.keys(data).map((key) => {
     appendButton(key);
+    appendOption(key)
   });
 }
 
@@ -38,6 +40,14 @@ function appendButton(someKey) {
   attr("class", "point-button").
   attr("value", `${someKey}`).
   attr("onclick", "pointSelected(this.value)").
+  text(`${someKey}`);
+}
+
+function appendOption(someKey) {
+  customSelect.
+  append("option").
+  attr("value", `${someKey}`).
+  attr("onchange", "pointSelected(this.value)").
   text(`${someKey}`);
 }
 
