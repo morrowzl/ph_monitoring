@@ -61,7 +61,7 @@ function showData(thisPoint) {
     var trace1 = {
       x: dates,
       y: readings,
-      mode: 'lines+markers',
+      mode: 'markers',
       type: 'scatter',
       name: `${thisPoint}`,
     };

@@ -50,26 +50,38 @@
     </div>
   </nav>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="button-container"></div>
+    <section id="scatter-plots">
+      <header>Scatter Plots for Selected Point</header>
+      <div class="row">
+        <div class="col-12">
+          <div class="button-container"></div>
+        </div>
       </div>
-    </div>    
-    <div class="row">
-      <div class="col-6" id="table-col"></div>
-      <div class="col-6" id="plot-col"></div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <button type="button" id="plotButton" onclick="testPlot()">Example Plot</button>
-        <div id="phPlot"></div>
+      <br>
+      <div class="row">
+        <div class="col-12" id="plot-col"></div>
       </div>
-    </div>
-    <div class="row"> 
-      <div class="col-12" id="sandbox">
-        <button type="button" id="tableButton" onclick="dataTable()">Data Table</button>
+    </section>
+    <section id="data">
+      <header>Data for Selected Point</header>
+      <div class="row">
+        <div class="col-12" id="table-col"></div>
+      </div>      
+    </section>
+    <section id="testing">
+      <header>Section for testing new things</header>
+      <div class="row">
+        <div class="col-12">
+          <button type="button" id="plotButton" onclick="testPlot()">Example Plot</button>
+          <div id="phPlot"></div>
+        </div>
       </div>
-    </div>
+      <div class="row"> 
+        <div class="col-12" id="sandbox">
+          <button type="button" id="tableButton" onclick="dataTable()">Data Table</button>
+        </div>
+      </div>      
+    </section>
   </div>
 
   <script src="../static/js/app.js"></script>
