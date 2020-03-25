@@ -6,6 +6,16 @@ body {
   background-color: #d4d4d4;
 }
 
+footer {
+  background-color: #ffc107!important;
+  color: #d4d4d4;
+  margin-top: 1.5%;
+  padding-top: 7px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-top: 6px;
+}
+
 header {
   background-color: #000000;
   color: #d4d4d4;
