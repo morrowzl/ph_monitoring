@@ -28,7 +28,7 @@ function createButtonsOne() {
 // createButtons by fetching data, 
 function createButtonsTwo(data) {
   Object.keys(data).map((key) => {
-    appendButton(key);
+    // appendButton(key);
     appendOption(key)
   });
 }
